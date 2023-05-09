@@ -41,7 +41,7 @@ public class main {
                     int quantity = input.nextInt();
                     cart = new ShoppingCart(id);
                     cart.addItem(id, quantity);
-                    cart.displayItems();
+                    cart.displayCart();
                 }
                 else if(choice2 == 2){
                     cart.emptyCart();

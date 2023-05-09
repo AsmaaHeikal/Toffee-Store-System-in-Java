@@ -1,5 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ShoppingCart {
         this.quantity = 0;
         this.total = 0.0;
         this.maxItems = 50;
-        this.maxKilos = 10;
+        this.maxKilos = 50;
         readFromFile();
     }
     
@@ -54,19 +55,31 @@ public class ShoppingCart {
        
     }
 
-    public void displayItems() {
-        System.out.println("Shopping Cart:");
-        double totalPrice = 0.0;
-        for (int i = items.size() - 1; i >= 0; i--) {
-            Item item = items.get(i);
-            if (item.getQuantity() > 0) {
-                double itemPrice = item.getPrice() * item.getQuantity();
-                totalPrice += itemPrice;
-                System.out.println(item.getQuantity() + "  " + item.getName() +" "+ itemPrice+" $");
-            }
+    public void displayCart() throws IOException {
+        File file = new File("shopping-cart.txt");
+        if (!file.exists()) {
+            System.out.println("Cart is empty.");
+            return;
         }
-        System.out.println("Total Price: " + totalPrice+" $");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line;
+        double totalPrice = 0.0;
+        System.out.println("Shopping Cart:");
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            int id = Integer.parseInt(parts[0]);
+            int quantity = Integer.parseInt(parts[1]);
+            double price = getPriceById(id);
+            String name = getNameById(id);
+            double itemPrice = price * quantity;
+            totalPrice += itemPrice;
+            System.out.println(quantity + " " + name + "(s) " + itemPrice + "$");
+        }
+        reader.close();
+        System.out.println("Total price: " + totalPrice + "$");
     }
+    
+    
 
     private class Item {
         private int id;
