@@ -9,13 +9,13 @@ public class main {
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
         if(choice == 1){
-            RegisterAndLogin register = new RegisterAndLogin();
+            User register = new User();
             register.register();
         }
 
 
         else if(choice == 2){
-            RegisterAndLogin login = new RegisterAndLogin();
+            User login = new User();
             login.login();
 
             System.out.println("Do you want to display the catalog?");

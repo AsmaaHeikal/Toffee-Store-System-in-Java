@@ -1,7 +1,7 @@
 import java.util.regex.*;
 import java.util.Scanner;
 import java.io.*;
-public class RegisterAndLogin {
+public class User {
 
     public boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
