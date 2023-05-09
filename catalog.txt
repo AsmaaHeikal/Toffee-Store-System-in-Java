@@ -1,20 +1,21 @@
-1-Werther's Original
-2-Heath Toffee Bar
-3-Skor Toffee Bar
-4-English Toffee
-5-Almond Roca
-6-Butter Toffee
-7-Toffifay
-8-Daim Toffee
-9-Coffee Toffee
-10-Thorntons Special Toffee
-11-Cadbury's Eclairs
-12-Walkers Nonsuch Toffee
-13-Bon Bon Buddies Toffee Whirls
-14-Bristows of Devon Toffee
-15-Campbells Scottish Tablet
-16-Nips Hard Toffee Candy
-17-Claudio Toffee
-18-Hammond's Candies Mitchell Sweet
-19-Jamesons Raspberry Ruffles
-20-Ross's of Edinburgh Scottish Toffee
+ID     Name                            Price  Type
+1 |Werther's Original                 |15.00| unit
+2 |Heath Toffee Bar                   |15.00| unit
+3 |Skor Toffee Bar                    |25.00| unit
+4 |Toffifay                           |20.00| unit
+5 |Daim Toffee                        |15.00| unit
+6 |Cadbury's Eclairs                  |10.00| unit
+7 |Bon Bon Buddies Toffee Whirls      |15.00| unit
+8 |Nips Hard Toffee Candy             |13.00| unit
+9 |Hammond's Candies Mitchell Sweet   |12.00| unit
+10|Jamesons Raspberry Ruffles         |20.00| unit
+11|English Toffee                     |30.00| kilo
+12|Almond Roca                        |50.00| kilo
+13|Butter Toffee                      |30.00| kilo
+14|Coffee Toffee                      |50.00| kilo
+15|Thorntons Special Toffee           |50.00| kilo
+16|Walkers Nonsuch Toffee             |40.00| kilo
+17|Bristows of Devon Toffee           |35.00| kilo
+18|Campbells Scottish Tablet          |45.00| kilo
+19|Claudio Toffee                     |11.99| kilo
+20|Ross's of Edinburgh Scottish Toffee|40.00| kilo
