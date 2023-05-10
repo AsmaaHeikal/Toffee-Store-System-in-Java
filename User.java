@@ -3,6 +3,9 @@ import java.util.Scanner;
 import java.io.*;
 public class User {
 
+    private String email;
+    private String password;
+    private String address;
     public boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -32,23 +35,23 @@ public class User {
     public void register() throws IOException {
         System.out.print("enter your email:");
         Scanner input = new Scanner(System.in);
-        String email = input.nextLine();
+        email = input.nextLine();
         while(!isValidEmail(email)){
             System.out.print("enter a valid email:");
             email = input.nextLine();
         }
         if(isFoundEmail(email)){
             System.out.println("this email is already registered");
-            return;
+            System.exit(0);
         }
         System.out.print("enter your password:");
-        String password = input.nextLine();
+        password = input.nextLine();
         while(!isStrongPassword(password)){
             System.out.print("enter a strong password:");
             password = input.nextLine();
         }
         System.out.print("enter your address:");
-        String address = input.nextLine();
+        address = input.nextLine();
         System.out.println("Your account has been created successfully");
         //store user data in database
         try {
@@ -64,7 +67,7 @@ public class User {
         while(!isFoundEmail) {
             System.out.print("enter your email:");
             Scanner input = new Scanner(System.in);
-            String email = input.nextLine();
+            email = input.nextLine();
             FileReader reader = new FileReader("Users.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line;
@@ -75,9 +78,10 @@ public class User {
                     int numberOfTries = 3;
                     while(numberOfTries-- >0) {
                         System.out.print("enter your password:");
-                        String password = input.nextLine();
+                        password = input.nextLine();
 
                         if (storedPassword.equals(password)) {
+                            address = bufferedReader.readLine();
                             bufferedReader.close();
                             System.out.println("You have logged in successfully");
                             return;
@@ -86,7 +90,7 @@ public class User {
                             System.out.println("Wrong password. Please try again.");
                         }else{
                             System.out.println("You have entered wrong password 3 times. Please try again later.");
-                            return;
+                            System.exit(0);
                         }
                     }
                 }
@@ -94,10 +98,16 @@ public class User {
                 bufferedReader.readLine();
                 bufferedReader.readLine();
             }
-            System.out.println("Email not found. Please try again.");
+            System.out.println("Email not found. Press 1 to Try again or 0 to Exit.");
+            String choice = input.nextLine();
+            if(!choice.equals("1"))System.exit(0);
             bufferedReader.close();
         }
 
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
 

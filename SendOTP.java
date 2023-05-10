@@ -21,7 +21,7 @@ public class SendOTP {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", port);
-        props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.3");
 
         // Create session with authentication
         Session session = Session.getInstance(props, new Authenticator() {
