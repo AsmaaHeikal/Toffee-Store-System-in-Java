@@ -1,7 +1,20 @@
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * this class runs the process of login the user and making an order
+ *
+ * @author Asmaa Heikal
+ * @version 1.0
+ * @since 11 May 2023
+ */
 public class MakeOrder {
+
+    /**
+     * this method runs the process of login the user and making an order
+     *
+     * @throws IOException throws an exception if an error occurred
+     */
     public void makeOrder() throws IOException {
         System.out.println("--------------------Login--------------------");
         User user = new User();

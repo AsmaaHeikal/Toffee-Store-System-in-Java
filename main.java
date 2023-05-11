@@ -1,7 +1,20 @@
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * This class to test Toffee Store core logic
+ *
+ * @author The phoenix team
+ * @version 1.0
+ * @since 11 May 2023
+ */
 public class main {
+
+    /**
+     * This is the main method.
+     * It is for testing purposes to test
+     * the work of Toffee Store program.
+     */
     public static void main(String[] args) throws IOException {
         System.out.println("1- Register");
         System.out.println("2- Login");

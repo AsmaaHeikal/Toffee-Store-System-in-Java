@@ -3,15 +3,51 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class represents a shopping cart.
+ * It has a list of items, a total price and a maximum number of items and kilos.
+ * It can add items to the cart, display the cart and get the total price.k
+ *
+ * @author Sara Adel
+ * @version 1.0
+ * @since 9 May 2023
+ */
 public class ShoppingCart {
+    /**
+     * The ID of the shopping cart.
+     */
     private int id;
+    /**
+     * The quantity of items in the cart.
+     */
     private int quantity;
+    /**
+     * The total price of the cart.
+     */
     private float price;
+    /**
+     * The total price of the cart.
+     */
     private float total;
+    /**
+     * The maximum number of units of one item in the cart.
+     */
     private int maxItems;
+    /**
+     * The maximum number of kilos of one item in the cart.
+     */
     private int maxKilos;
+    /**
+     * The list of items in the cart.
+     */
     private List<Item> items = new ArrayList<>();
 
+    /**
+     * this is a constructor for the shopping cart.
+     * It initializes the ID, price, quantity, total, maxItems and maxKilos.
+     *
+     * @param id the ID of the shopping cart
+     */
     public ShoppingCart(int id) throws IOException {
         this.id = id;
         this.price = getPriceById(id);
@@ -22,10 +58,20 @@ public class ShoppingCart {
         readFromFile();
     }
 
+    /**
+     * this method returns the quantity
+     */
     private int getQuantity() {
         return quantity;
     }
 
+    /**
+     * this method add item to the shopping cart.
+     *
+     * @param ID       the ID of the item
+     * @param Quantity the quantity of the item
+     * @throws IOException if an I/O error occurs
+     */
     public void addItem(int ID, int Quantity) throws IOException {
         if (ID < 1 || ID > 20) {
             System.out.println("Invalid item ID!");
@@ -49,6 +95,11 @@ public class ShoppingCart {
 
     }
 
+    /**
+     * this method displays the cart
+     *
+     * @throws IOException if an I/O error occurs
+     */
     public void displayCart() throws IOException {
         File file = new File("shopping-cart.txt");
         if (!file.exists()) {
@@ -74,6 +125,11 @@ public class ShoppingCart {
         System.out.println("-----------------------------------------------------------");
     }
 
+    /**
+     * this method gets the total price of the cart
+     *
+     * @throws IOException if an I/O error occurs
+     */
     public float getTotal() throws IOException {
         File file = new File("shopping-cart.txt");
         if (!file.exists()) {
@@ -96,6 +152,11 @@ public class ShoppingCart {
         return totalPrice;
     }
 
+    /**
+     * this method saves the cart to the cart file
+     *
+     * @throws IOException if an I/O error occurs
+     */
     public void saveCart() throws IOException {
         File file = new File("shopping-cart.txt");
         FileWriter writeToFile = new FileWriter(file);
@@ -105,6 +166,9 @@ public class ShoppingCart {
         writeToFile.close();
     }
 
+    /**
+     * this method empties the cart
+     */
     public void emptyCart() {
         try {
             File file = new File("shopping-cart.txt");
@@ -116,6 +180,12 @@ public class ShoppingCart {
         }
     }
 
+    /**
+     * this method returns the price of item
+     *
+     * @param id the ID of the item
+     * @return the price of the item
+     */
     private float getPriceById(int id) {
         for (Item item : items) {
             if (item.getId() == id) {
@@ -125,6 +195,12 @@ public class ShoppingCart {
         return 0;
     }
 
+    /**
+     * this method returns the name of the item
+     *
+     * @param id the ID of the item
+     * @return the name of the item
+     */
     private String getNameById(int id) {
         for (Item item : items) {
             if (item.getId() == id) {
@@ -134,6 +210,12 @@ public class ShoppingCart {
         return "";
     }
 
+    /**
+     * this method returns the type of the item
+     *
+     * @param id the ID of the item
+     * @return the type of the item
+     */
     private String getTypeById(int id) {
         for (Item item : items) {
             if (item.getId() == id) {
@@ -143,6 +225,11 @@ public class ShoppingCart {
         return "";
     }
 
+    /**
+     * this method reads from the catalog file
+     *
+     * @throws IOException if an I/O error occurs
+     */
     private void readFromFile() throws IOException {
 
         File file = new File("catalog.txt");
@@ -161,6 +248,13 @@ public class ShoppingCart {
         scanner.close();
     }
 
+    /**
+     * this method updates the cart file
+     *
+     * @param ID       the ID of the item
+     * @param Quantity the quantity of the item
+     * @throws IOException if an I/O error occurs
+     */
     public void updateCartFile(int ID, int Quantity) throws IOException {
 
         File file = new File("shopping-cart.txt");
@@ -189,6 +283,12 @@ public class ShoppingCart {
         writer.close();
     }
 
+    /**
+     * this class represents an item
+     * it has an ID, name, price, type and quantity
+     * it has getters for all of them
+     * it has a constructor that sets all of them
+     */
     private class Item {
         private int id;
         private String name;

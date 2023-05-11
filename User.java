@@ -1,14 +1,27 @@
-import java.util.Objects;
 import java.util.regex.*;
 import java.util.Scanner;
 import java.io.*;
 
+/**
+ * This class represents a user in the system
+ * it allows the user to register, login
+ *
+ * @author Asmaa Heikal
+ * @version 1.0
+ * @since 11 May 2023
+ */
 public class User {
 
     private String email;
     private String password;
     private String address;
 
+    /**
+     * This method checks if the email is valid or not
+     *
+     * @param email the email to be checked
+     * @return true if the email is valid, false otherwise
+     */
     public boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -18,12 +31,25 @@ public class User {
         return pattern.matcher(email).matches();
     }
 
+    /**
+     * This method checks if the password is strong or not
+     *
+     * @param password the password to be checked
+     * @return true if the password is strong, false otherwise
+     */
     public boolean isStrongPassword(String password) {
         String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
         Pattern pattern = Pattern.compile(passwordRegex);
         return pattern.matcher(password).matches();
     }
 
+    /**
+     * This method checks if the email is found in the database or not
+     *
+     * @param email the email to be checked
+     * @return true if the email is found, false otherwise
+     * @throws IOException if an I/O error occurs
+     */
     public boolean isFoundEmail(String email) throws IOException {
         FileReader reader = new FileReader("Users.txt");
         BufferedReader bufferedReader = new BufferedReader(reader);
@@ -36,6 +62,12 @@ public class User {
         return false;
     }
 
+    /**
+     * This method allows the user to register.
+     * and enter his data
+     *
+     * @throws IOException if an I/O error occurs
+     */
     public void register() throws IOException {
         System.out.print("enter your email:");
         Scanner input = new Scanner(System.in);
@@ -79,6 +111,12 @@ public class User {
         }
     }
 
+    /**
+     * This method allows the user to log in
+     * and enter his data
+     *
+     * @throws IOException if an I/O error occurs
+     */
     public void login() throws IOException {
         boolean isFoundEmail = false;
         while (!isFoundEmail) {
@@ -123,6 +161,11 @@ public class User {
 
     }
 
+    /**
+     * This method returns the user's address
+     *
+     * @return the user's Address
+     */
     public String getAddress() {
         return address;
     }

@@ -3,8 +3,21 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Random;
 
+/**
+ * This class generates a 6-digit OTP and sends it to the user's email address
+ * using JavaMail API.
+ *
+ * @author Asmaa Heikal
+ * @version 1.0
+ * @since 11 May 2023
+ */
 public class OTP {
 
+    /**
+     * This method generates a 6-digit OTP
+     *
+     * @return the generated OTP as a string
+     */
     public String generateOTP() {
 
         // Characters allowed in the OTP
@@ -26,6 +39,12 @@ public class OTP {
         return otp.toString();
     }
 
+    /**
+     * This method sends the OTP to the user's email address
+     *
+     * @param userEmail the user's email address
+     * @param OTP       the generated OTP
+     */
     public void sendOTP(String userEmail, String OTP) {
         // Email details
         String host = "smtp.gmail.com";
