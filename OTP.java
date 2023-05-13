@@ -31,9 +31,11 @@ public class OTP {
 
         // Generate random OTP
         for (int i = 0; i < 6; i++) {
+
             int index = random.nextInt(allowedChars.length());
             otp.append(allowedChars.charAt(index));
         }
+        
 
         // Return the OTP as a string
         return otp.toString();
@@ -62,7 +64,9 @@ public class OTP {
 
         // Create session with authentication
         Session session = Session.getInstance(props, new Authenticator() {
+
             protected PasswordAuthentication getPasswordAuthentication() {
+
                 return new PasswordAuthentication(username, password);
             }
         });
@@ -81,6 +85,7 @@ public class OTP {
             System.out.println("OTP sent successfully to " + userEmail);
 
         } catch (MessagingException e) {
+            
             e.printStackTrace();
         }
     }

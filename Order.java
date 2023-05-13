@@ -32,6 +32,7 @@ public class Order {
      * @param deliveryAddress the address where order is delivered
      */
     public Order(String deliveryAddress) {
+
         this.deliveryAddress = deliveryAddress;
     }
 
@@ -42,6 +43,7 @@ public class Order {
      * representing the order status.
      */
     public OrderStatus getStatus() {
+        
         return status;
     }
 
@@ -52,15 +54,19 @@ public class Order {
      * @return if order is paid or not
      */
     public boolean payOrder(Payment payment) {
+
         if (status == OrderStatus.CLOSED) {
-            System.out.println("Order is already paid");
+
+            System.out.println("Order is already paid ");
             return true;
         } else {
             boolean paidOrder = payment.settlePayment();
             if (paidOrder) {
                 status = OrderStatus.CLOSED;
-                System.out.println("Order is closed and delivered to the address you entered.\nThank you (:");
+                System.out.println("Order is closed and delivered to the address you entered.
+                \nThank you!  (:");
             }
+
             return paidOrder;
         }
     }

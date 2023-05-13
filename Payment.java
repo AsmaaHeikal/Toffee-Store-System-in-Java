@@ -16,7 +16,7 @@ public abstract class Payment {
     /**
      * get the amount to be paid
      *
-     * @return the mount that needs to be paid.
+     * @return the amount that needs to be paid.
      */
     public float getAmount() {
         return amount;
@@ -28,7 +28,7 @@ public abstract class Payment {
      * And then displays a message if payment
      * was successful or not.
      *
-     * @return - true if payment was succssful and false
+     * @return - true if payment was successful and false
      * and false otherwise.
      */
     public boolean settlePayment() {
