@@ -24,6 +24,7 @@ public class Cash extends Payment {
      * @param cash   is the cash given to be for the due amount
      */
     public Cash(float amount, float cash) {
+        
         super(amount);
         this.cash = cash;
     }
@@ -36,6 +37,7 @@ public class Cash extends Payment {
      * and payment was successful
      */
     public boolean deductAmount() {
+        
         change = cash - getAmount();
         return (change >= 0);
     }
@@ -46,12 +48,13 @@ public class Cash extends Payment {
      * or not
      */
     public void displayMessage() {
+        
         if (change >= 0) {
             System.out.println("You paid: " + cash + " and change: " + change);
-            System.out.println("Successful Cash Payment");
+            System.out.println("Successful Cash Payment ");
         } else {
             System.out.println("You paid: " + cash + " but required amount is: " + getAmount());
-            System.out.println("Unsuccessful Cash Payment");
+            System.out.println("Unsuccessful Cash Payment ");
         }
     }
 }
