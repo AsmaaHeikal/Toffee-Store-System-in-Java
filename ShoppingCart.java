@@ -49,19 +49,22 @@ public class ShoppingCart {
      * @param id the ID of the shopping cart
      */
     public ShoppingCart(int id) throws IOException {
+        
         this.id = id;
         this.price = getPriceById(id);
         this.quantity = 0;
-        this.total = 0;
+        this.total =  0;
         this.maxItems = 50;
-        this.maxKilos = 50;
+        this.maxKilos =  50;
         readFromFile();
+        
     }
 
     /**
      * this method returns the quantity
      */
     private int getQuantity() {
+        
         return quantity;
     }
 
@@ -74,6 +77,7 @@ public class ShoppingCart {
      */
     public void addItem(int ID, int Quantity) throws IOException {
         if (ID < 1 || ID > 20) {
+            
             System.out.println("Invalid item ID!");
             return;
         }
@@ -82,14 +86,14 @@ public class ShoppingCart {
         String itemType = getTypeById(ID);
         int addedQuantity = getQuantity();
         if (itemType.equals("kilo") && addedQuantity + Quantity > maxKilos) {
-            System.out.println("You have reached the maximum number of this item in your cart!");
+            System.out.println("You have reached the maximum number of this item in your cart! ");
             return;
         } else if (itemType.equals("unit") && addedQuantity + Quantity > maxItems) {
-            System.out.println("You have reached the maximum kilos of this item in your cart!");
+            System.out.println("You have reached the maximum kilos of this item in your cart! ");
             return;
         } else {
             this.items.add(new Item(ID, itemName, itemPrice, Quantity, itemType));
-            System.out.println("You have added " + Quantity + " " + itemName + "(s) to your cart.");
+            System.out.println("You have added " + Quantity + " " + itemName + "(s) to your cart. ");
             updateCartFile(ID, Quantity);
         }
 
@@ -101,16 +105,16 @@ public class ShoppingCart {
      * @throws IOException if an I/O error occurs
      */
     public void displayCart() throws IOException {
-        File file = new File("shopping-cart.txt");
+        File file = new File("shopping-cart.txt ");
         if (!file.exists()) {
-            System.out.println("Cart is empty.");
+            System.out.println("Cart is empty. ");
             return;
         }
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         float totalPrice = 0;
-        System.out.println("-----------------------Shopping Cart-----------------------");
-        while ((line = reader.readLine()) != null) {
+        System.out.println("-----------------------Shopping Cart----------------------- ");
+        while ((line = reader.readLine()) !=  null) {
             String[] parts = line.split(",");
             int id = Integer.parseInt(parts[0]);
             int quantity = Integer.parseInt(parts[1]);
@@ -118,9 +122,10 @@ public class ShoppingCart {
             String name = getNameById(id);
             float itemPrice = price * quantity;
             totalPrice += itemPrice;
-            System.out.println(quantity + " " + name + "(s) " + itemPrice + "$");
+            System.out.println(quantity + " " + name + "(s) " + itemPrice + "$ ");
         }
         reader.close();
+        
         System.out.println("Total price: " + totalPrice + "$");
         System.out.println("-----------------------------------------------------------");
     }
@@ -131,15 +136,19 @@ public class ShoppingCart {
      * @throws IOException if an I/O error occurs
      */
     public float getTotal() throws IOException {
+        
         File file = new File("shopping-cart.txt");
         if (!file.exists()) {
             System.out.println("Cart is empty.");
             return 0;
+            
         }
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         float totalPrice = 0;
+        
         while ((line = reader.readLine()) != null) {
+            
             String[] parts = line.split(",");
             int id = Integer.parseInt(parts[0]);
             int quantity = Integer.parseInt(parts[1]);
@@ -147,9 +156,11 @@ public class ShoppingCart {
             String name = getNameById(id);
             float itemPrice = price * quantity;
             totalPrice += itemPrice;
+            
         }
         reader.close();
         return totalPrice;
+        
     }
 
     /**
@@ -162,6 +173,7 @@ public class ShoppingCart {
         FileWriter writeToFile = new FileWriter(file);
         for (Item item : items) {
             writeToFile.write(item.getId() + "," + item.getQuantity() + "\n");
+            
         }
         writeToFile.close();
     }
@@ -175,6 +187,7 @@ public class ShoppingCart {
             FileWriter writer = new FileWriter(file);
             writer.write("");
             writer.close();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -187,12 +200,15 @@ public class ShoppingCart {
      * @return the price of the item
      */
     private float getPriceById(int id) {
+        
         for (Item item : items) {
             if (item.getId() == id) {
+                
                 return item.getPrice();
             }
         }
         return 0;
+        
     }
 
     /**
@@ -204,6 +220,7 @@ public class ShoppingCart {
     private String getNameById(int id) {
         for (Item item : items) {
             if (item.getId() == id) {
+                
                 return item.getName();
             }
         }
@@ -218,7 +235,9 @@ public class ShoppingCart {
      */
     private String getTypeById(int id) {
         for (Item item : items) {
+            
             if (item.getId() == id) {
+                
                 return item.getType();
             }
         }
@@ -236,6 +255,7 @@ public class ShoppingCart {
         Scanner scanner = new Scanner(file);
         scanner.nextLine();
         while (scanner.hasNextLine()) {
+            
             String line = scanner.nextLine().toLowerCase();
             String[] catalogParts = line.split("\\|");
             int id = Integer.parseInt(catalogParts[0].trim());
@@ -273,11 +293,13 @@ public class ShoppingCart {
             lines.add(line);
         }
         if (Quantity > 0) {
+            
             lines.add(ID + "," + Quantity);
         }
         scanner.close();
         FileWriter writer = new FileWriter(file);
         for (String line : lines) {
+            
             writer.write(line + "\n");
         }
         writer.close();
@@ -297,6 +319,7 @@ public class ShoppingCart {
         private int quantity;
 
         public Item(int id, String name, float price, int quantity, String type) {
+            
             this.id = id;
             this.name = name;
             this.price = price;
