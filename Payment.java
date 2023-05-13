@@ -2,6 +2,7 @@
  * This is an abstrat class of payment.
  */
 public abstract class Payment {
+    
     private float amount;
 
     /**
@@ -10,6 +11,7 @@ public abstract class Payment {
      * @param amount - is the amount to be paid
      */
     public Payment(float amount) {
+        
         this.amount = amount;
     }
 
@@ -19,6 +21,7 @@ public abstract class Payment {
      * @return the amount that needs to be paid.
      */
     public float getAmount() {
+        
         return amount;
     }
 
@@ -32,6 +35,7 @@ public abstract class Payment {
      * and false otherwise.
      */
     public boolean settlePayment() {
+        
         boolean successfulPayment = deductAmount();
         displayMessage();
         return successfulPayment;
@@ -43,6 +47,7 @@ public abstract class Payment {
      * @return true if amount was deducted
      */
     public abstract boolean deductAmount();
+    
 
     /**
      * Display a message showing payment success
