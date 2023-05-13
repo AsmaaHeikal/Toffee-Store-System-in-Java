@@ -63,8 +63,7 @@ public class Order {
             boolean paidOrder = payment.settlePayment();
             if (paidOrder) {
                 status = OrderStatus.CLOSED;
-                System.out.println("Order is closed and delivered to the address you entered.
-                \nThank you!  (:");
+                System.out.println("Order is closed and delivered to the address you entered.\nThank you!  (:");
             }
 
             return paidOrder;
