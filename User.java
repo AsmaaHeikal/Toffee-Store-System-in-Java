@@ -88,24 +88,24 @@ public class User {
             System.out.println("1.You can choose uppercase letters, lowercase letter, digits, and special chararcters.");
             System.out.println("2.It must contain at least 8 character.");
             System.out.println("3.It should include at least one uppercase letter, one lowercase letter, one numeric digit and one special character.");
-            System.out.println("4.Remember that uppercase letters are different from lowercase letters.");    
-            System.out.print("enter a strong password:");        
+            System.out.println("4.Remember that uppercase letters are different from lowercase letters.");
+            System.out.print("enter a strong password:");
             password = input.nextLine();
         }
         System.out.print("enter your address:");
         address = input.nextLine();
 
-        // OTP userOTP = new OTP();
-        // String OTP = userOTP.generateOTP();
-        // userOTP.sendOTP(email, OTP);
-        // System.out.print("To verify your email enter the OTP you received: ");
-        // String enteredOTP = input.nextLine();
-        // if (enteredOTP.equals(OTP)) {
-        //     System.out.println("Your account has been created successfully");
-        // } else {
-        //     System.out.println("Invalid OTP, try again later.");
-        //     System.exit(0);
-        // }
+        OTP userOTP = new OTP();
+        String OTP = userOTP.generateOTP();
+        userOTP.sendOTP(email, OTP);
+        System.out.print("To verify your email enter the OTP you received: ");
+        String enteredOTP = input.nextLine();
+        if (enteredOTP.equals(OTP)) {
+            System.out.println("Your account has been created successfully");
+        } else {
+            System.out.println("Invalid OTP, try again later.");
+            System.exit(0);
+        }
 
         //store user data in database
         try {

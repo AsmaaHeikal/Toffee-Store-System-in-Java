@@ -49,12 +49,8 @@ public class OTP {
         // Email details
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "asmaaiheikal@gmail.com"; // replace with your email
-        String password = "ddvmragbrfguvtnf"; // replace with your email password
-
-        // User details
-//        String userEmail = "asaney555@gmail.com"; // replace with user's email
-//        String OTP = "123456"; // replace with generated OTP
+        String username = ""; // replace with your email
+        String password = ""; // replace with your email password or App Password if 2FA is enabled
 
         // Email properties
         Properties props = new Properties();
