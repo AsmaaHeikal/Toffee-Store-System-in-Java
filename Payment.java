@@ -36,9 +36,10 @@ public abstract class Payment {
      */
     public boolean settlePayment() {
         
-        boolean successfulPayment = deductAmount();
+        boolean successfulPayment =  deductAmount();
         displayMessage();
         return successfulPayment;
+        
     }
 
     /**
@@ -48,10 +49,13 @@ public abstract class Payment {
      */
     public abstract boolean deductAmount();
     
+    
 
     /**
      * Display a message showing payment success
      * or failure
      */
     public abstract void displayMessage();
+    
+    
 }
